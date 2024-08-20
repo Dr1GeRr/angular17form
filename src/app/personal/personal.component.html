@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Details Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f8fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .personal-form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 500px;
+    }
+
+    .personal-form h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .personal-form .form-group {
+      margin-bottom: 15px;
+    }
+
+    .personal-form label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .personal-form input[type="text"],
+    .personal-form input[type="email"],
+    .personal-form input[type="password"],
+    .personal-form input[type="number"],
+    .personal-form textarea,
+    .personal-form select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+
+    .personal-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .personal-form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault(); // Prevent the default form submission
+      window.location.href = "personal"; // Redirect to the desired URL
+    }
+  </script>
+</head>
+<body>
+
+  <div class="personal-form">
+    <h2>Personal Details Form</h2>
+    <form (ngSubmit)="updateUserInfo(formData)" #formData="ngForm">
+      <div class="form-group">
+        <label for="hobby">Hobbies:</label>
+        <textarea id="hobby" name="hobby" rows="3" placeholder="Enter your hobbies" ngModel></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" placeholder="Enter your occupation" ngModel>
+      </div>
+      
+      <div class="form-group">
+        <label for="places-visited">Places Visited:</label>
+        <textarea id="places-visited" name="places-visited" rows="3" placeholder="Enter places you have visited" ngModel></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="favorite-artist">Favorite Artist:</label>
+        <input type="text" id="favorite-artist" name="favorite-artist" placeholder="Enter your favorite artist" ngModel>
+      </div>
+      
+      <div class="form-group">
+        <label for="favorite-musician">Favorite Musician:</label>
+        <input type="text" id="favorite-musician" name="favorite-musician" placeholder="Enter your favorite musician" ngModel>
+      </div>
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
+
+</body>
+</html>

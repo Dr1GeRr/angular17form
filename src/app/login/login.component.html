@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .wrapper {
+      text-align: center;
+    }
+
+    .login {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      position: relative;
+    }
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .login input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .login input:focus {
+      border-color: #007bff;
+    }
+
+    .login button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .login button .spinner {
+      display: none;
+    }
+
+    .login.loading button .spinner {
+      display: inline-block;
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .login.loading button .state {
+      margin-left: 30px;
+    }
+
+    .login.ok button {
+      background-color: #28a745;
+    }
+
+    .login.ok button .state {
+      margin-left: 0;
+    }
+
+    .login a {
+      display: block;
+      margin-top: 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .login a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <form class="login">
+      <p class="title">Log in</p>
+      <input type="text" placeholder="Username" autofocus/>
+      <i class="fa fa-user"></i>
+      <input type="password" placeholder="Password" />
+      <i class="fa fa-key"></i>
+      <a href="contact">Forgot your password?</a>
+      <button>
+        <i class="spinner fa fa-spinner fa-spin"></i>
+        <span class="state">Log in</span>
+      </button>
+    </form>
+    <footer><a target="_blank" href=" "></a></footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    var working = false;
+    $('.login').on('submit', function(e) {
+      e.preventDefault();
+      if (working) return;
+      working = true;
+      var $this = $(this),
+          $state = $this.find('button > .state');
+      $this.addClass('loading');
+      $state.html('Authenticating');
+      setTimeout(function() {
+        $this.addClass('ok');
+        $state.html('Welcome back!');
+        setTimeout(function() {
+          $state.html('Log in');
+          $this.removeClass('ok loading');
+          working = false;
+        }, 4000);
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>

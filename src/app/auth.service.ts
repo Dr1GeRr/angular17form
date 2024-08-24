@@ -33,8 +33,10 @@ export class AuthService {
   }
 
   logout(): void {
-    // Remove JWT token from local storage
-    localStorage.removeItem('token');
+    // Clear session-related data
+    localStorage.removeItem('token');         // Remove JWT token
+    localStorage.removeItem('csrfToken');     // Remove CSRF token if stored
+    // You can clear other session-related data here if necessary
     this.tokenSubject.next(null);
   }
 
